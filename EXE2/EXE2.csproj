@@ -1,0 +1,178 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\404-error-img.png" />
+    <None Include="wwwroot\images\about-bg-image.png" />
+    <None Include="wwwroot\images\about-restaurant-bg-image.svg" />
+    <None Include="wwwroot\images\about-restaurant-img.jpg" />
+    <None Include="wwwroot\images\about-us-image.jpg" />
+    <None Include="wwwroot\images\asterisk-icon.svg" />
+    <None Include="wwwroot\images\author-signature.svg" />
+    <None Include="wwwroot\images\book-table-image.jpg" />
+    <None Include="wwwroot\images\cta-bg-image.png" />
+    <None Include="wwwroot\images\dessert-image-2.png" />
+    <None Include="wwwroot\images\dessert-image-3.png" />
+    <None Include="wwwroot\images\dessert-image-4.png" />
+    <None Include="wwwroot\images\dessert-image-5.png" />
+    <None Include="wwwroot\images\dessert-image-6.png" />
+    <None Include="wwwroot\images\dessert-image-7.png" />
+    <None Include="wwwroot\images\dessert-image-8.png" />
+    <None Include="wwwroot\images\faq-image.jpg" />
+    <None Include="wwwroot\images\favicon.png" />
+    <None Include="wwwroot\images\footer-bg-image.jpg" />
+    <None Include="wwwroot\images\footer-logo.svg" />
+    <None Include="wwwroot\images\gallery-1.jpg" />
+    <None Include="wwwroot\images\gallery-2.jpg" />
+    <None Include="wwwroot\images\gallery-3.jpg" />
+    <None Include="wwwroot\images\gallery-4.jpg" />
+    <None Include="wwwroot\images\gallery-5.jpg" />
+    <None Include="wwwroot\images\gallery-6.jpg" />
+    <None Include="wwwroot\images\gallery-7.jpg" />
+    <None Include="wwwroot\images\gallery-8.jpg" />
+    <None Include="wwwroot\images\gallery-9.jpg" />
+    <None Include="wwwroot\images\header-sidebar-btn.svg" />
+    <None Include="wwwroot\images\hero-bg-2.jpg" />
+    <None Include="wwwroot\images\hero-bg.jpg" />
+    <None Include="wwwroot\images\icon-about-body-item-1.svg" />
+    <None Include="wwwroot\images\icon-about-body-item-2.svg" />
+    <None Include="wwwroot\images\icon-blockquote.svg" />
+    <None Include="wwwroot\images\icon-clock-accent.svg" />
+    <None Include="wwwroot\images\icon-coffee-beans.svg" />
+    <None Include="wwwroot\images\icon-intro-video-counter-1.svg" />
+    <None Include="wwwroot\images\icon-intro-video-counter-2.svg" />
+    <None Include="wwwroot\images\icon-intro-video-counter-3.svg" />
+    <None Include="wwwroot\images\icon-intro-video-counter-4.svg" />
+    <None Include="wwwroot\images\icon-location-accent.svg" />
+    <None Include="wwwroot\images\icon-location.svg" />
+    <None Include="wwwroot\images\icon-mail-accent.svg" />
+    <None Include="wwwroot\images\icon-mail.svg" />
+    <None Include="wwwroot\images\icon-member-content-1.svg" />
+    <None Include="wwwroot\images\icon-member-content-2.svg" />
+    <None Include="wwwroot\images\icon-our-mission.svg" />
+    <None Include="wwwroot\images\icon-our-value.svg" />
+    <None Include="wwwroot\images\icon-our-vision.svg" />
+    <None Include="wwwroot\images\icon-phone-accent.svg" />
+    <None Include="wwwroot\images\icon-phone.svg" />
+    <None Include="wwwroot\images\icon-project-detail-1.svg" />
+    <None Include="wwwroot\images\icon-project-detail-2.svg" />
+    <None Include="wwwroot\images\icon-project-detail-3.svg" />
+    <None Include="wwwroot\images\icon-project-detail-4.svg" />
+    <None Include="wwwroot\images\icon-project-detail-5.svg" />
+    <None Include="wwwroot\images\icon-service-1.svg" />
+    <None Include="wwwroot\images\icon-service-2.svg" />
+    <None Include="wwwroot\images\icon-service-3.svg" />
+    <None Include="wwwroot\images\icon-service-4.svg" />
+    <None Include="wwwroot\images\icon-service-5.svg" />
+    <None Include="wwwroot\images\icon-service-6.svg" />
+    <None Include="wwwroot\images\icon-story-1.svg" />
+    <None Include="wwwroot\images\icon-story-2.svg" />
+    <None Include="wwwroot\images\icon-story-3.svg" />
+    <None Include="wwwroot\images\icon-sub-heading.svg" />
+    <None Include="wwwroot\images\icon-why-choose-1.svg" />
+    <None Include="wwwroot\images\icon-why-choose-2.svg" />
+    <None Include="wwwroot\images\icon-why-choose-3.svg" />
+    <None Include="wwwroot\images\icon-why-choose-4.svg" />
+    <None Include="wwwroot\images\icon-why-choose-5.svg" />
+    <None Include="wwwroot\images\icon-why-choose-6.svg" />
+    <None Include="wwwroot\images\interactive-process-image-1.jpg" />
+    <None Include="wwwroot\images\interactive-process-image-2.jpg" />
+    <None Include="wwwroot\images\interactive-process-image-3.jpg" />
+    <None Include="wwwroot\images\interactive-process-image-4.jpg" />
+    <None Include="wwwroot\images\intro-video-bg.jpg" />
+    <None Include="wwwroot\images\loader.svg" />
+    <None Include="wwwroot\images\logo.svg" />
+    <None Include="wwwroot\images\menu-image-1.jpg" />
+    <None Include="wwwroot\images\menu-image-2.jpg" />
+    <None Include="wwwroot\images\menu-image-3.jpg" />
+    <None Include="wwwroot\images\offer-bg-image.png" />
+    <None Include="wwwroot\images\offer-circle-image-1.jpg" />
+    <None Include="wwwroot\images\offer-circle-image-2.jpg" />
+    <None Include="wwwroot\images\offer-image.jpg" />
+    <None Include="wwwroot\images\original-coffee-img-1.png" />
+    <None Include="wwwroot\images\original-coffee-img-2.png" />
+    <None Include="wwwroot\images\original-coffee-img-3.png" />
+    <None Include="wwwroot\images\original-coffee-img-4.png" />
+    <None Include="wwwroot\images\original-coffee-img-5.png" />
+    <None Include="wwwroot\images\original-coffee-img-6.png" />
+    <None Include="wwwroot\images\original-coffee-img-7.png" />
+    <None Include="wwwroot\images\original-coffee-img-8.png" />
+    <None Include="wwwroot\images\our-approach-image.jpg" />
+    <None Include="wwwroot\images\our-story-image.jpg" />
+    <None Include="wwwroot\images\page-header-bg.jpg" />
+    <None Include="wwwroot\images\post-1.jpg" />
+    <None Include="wwwroot\images\post-2.jpg" />
+    <None Include="wwwroot\images\post-3.jpg" />
+    <None Include="wwwroot\images\post-4.jpg" />
+    <None Include="wwwroot\images\post-5.jpg" />
+    <None Include="wwwroot\images\post-6.jpg" />
+    <None Include="wwwroot\images\pricing-bg-image.png" />
+    <None Include="wwwroot\images\pricing-menu-1.png" />
+    <None Include="wwwroot\images\pricing-menu-2.png" />
+    <None Include="wwwroot\images\pricing-menu-3.png" />
+    <None Include="wwwroot\images\pricing-menu-4.png" />
+    <None Include="wwwroot\images\pricing-tab-image-1.jpg" />
+    <None Include="wwwroot\images\pricing-tab-image-2.jpg" />
+    <None Include="wwwroot\images\pricing-tab-image-3.jpg" />
+    <None Include="wwwroot\images\pricing-tab-image-4.jpg" />
+    <None Include="wwwroot\images\project-1.jpg" />
+    <None Include="wwwroot\images\project-2.jpg" />
+    <None Include="wwwroot\images\project-3.jpg" />
+    <None Include="wwwroot\images\project-4.jpg" />
+    <None Include="wwwroot\images\project-5.jpg" />
+    <None Include="wwwroot\images\project-6.jpg" />
+    <None Include="wwwroot\images\project-7.jpg" />
+    <None Include="wwwroot\images\project-8.jpg" />
+    <None Include="wwwroot\images\project-9.jpg" />
+    <None Include="wwwroot\images\satisfy-client-img-1.jpg" />
+    <None Include="wwwroot\images\satisfy-client-img-2.jpg" />
+    <None Include="wwwroot\images\satisfy-client-img-3.jpg" />
+    <None Include="wwwroot\images\satisfy-client-img-4.jpg" />
+    <None Include="wwwroot\images\service-entry-box-1.svg" />
+    <None Include="wwwroot\images\service-entry-box-2.svg" />
+    <None Include="wwwroot\images\service-single-img.jpg" />
+    <None Include="wwwroot\images\tea-bread-image-1.png" />
+    <None Include="wwwroot\images\tea-bread-image-2.png" />
+    <None Include="wwwroot\images\tea-bread-image-3.png" />
+    <None Include="wwwroot\images\tea-bread-image-4.png" />
+    <None Include="wwwroot\images\tea-bread-image-5.png" />
+    <None Include="wwwroot\images\tea-bread-image-6.png" />
+    <None Include="wwwroot\images\tea-bread-image-7.png" />
+    <None Include="wwwroot\images\tea-bread-image-8.png" />
+    <None Include="wwwroot\images\team-1.jpg" />
+    <None Include="wwwroot\images\team-2.jpg" />
+    <None Include="wwwroot\images\team-3.jpg" />
+    <None Include="wwwroot\images\team-4.jpg" />
+    <None Include="wwwroot\images\team-5.jpg" />
+    <None Include="wwwroot\images\team-6.jpg" />
+    <None Include="wwwroot\images\testimonial-bg.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-1.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-2.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-3.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-4.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-5.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-6.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-7.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-8.jpg" />
+    <None Include="wwwroot\images\video-gallery-img-9.jpg" />
+    <None Include="wwwroot\images\why-chose-us-bg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
