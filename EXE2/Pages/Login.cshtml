@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	<!-- Bootstrap CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<style>
 		* {
 			margin: 0;
@@ -323,107 +324,95 @@
 	</style>
 </head>
 
-<body>
-	<a asp-page="/Index">
-		<img src="images/logo-shop.png" width="150px" height="auto" alt="Logo">
-	</a>
-	<div class="container" id="container">
-		<div class="form-container sign-up">
-			<form method="post" asp-page-handler="Register" class="wow fadeInUp" data-wow-delay="0.6s">
-				<h1>Sign Up</h1>
+	<body>
+		<a asp-page="/Index">
+			<img src="images/logo-shop.png" width="150px" height="auto" alt="Logo">
+		</a>
+		<div class="container" id="container">
+			<div class="form-container sign-up">
+				<form method="post" asp-page-handler="Register" class="wow fadeInUp" data-wow-delay="0.6s">
+					<h1>Sign Up</h1>
+					<div class="social-icons mb-4">
+						<a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i> </a>
+					</div>
+					<span class="mb-4">or use your email for registration</span>
+					<div class="row">
+						<div class="form-group col-12 mb-4">
+							<input asp-for="FullName" type="text" class="form-control" placeholder="Full Name" required>
+							<div class="help-block with-errors"></div>
+						</div>
+						<div class="form-group col-12 mb-4">
+							<input asp-for="Email" type="email" class="form-control" placeholder="Email Address" required>
+							<div class="help-block with-errors"></div>
+						</div>
+						<div class="form-group col-12 mb-4">
+							<input asp-for="Password" type="password" class="form-control" placeholder="Password" required>
+							<div class="help-block with-errors"></div>
+						</div>
+						<div class="col-12">
+							<button type="submit" class="btn-default">Sign Up</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="form-container sign-in">
+				<form method="post" class="wow fadeInUp" data-wow-delay="0.6s">
+					<h1>Sign In</h1>
+					
 				<div class="social-icons mb-4">
-					<a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i> </a>
+					<a href="~/Login?handler=Google" class="icon">
+						<i class="fa-brands fa-google"></i> 
+					</a>
 				</div>
-				<span class="mb-4">or use your email for registration</span>
-				<div class="row">
-					<div class="form-group col-12 mb-4">
-						<input asp-for="FullName" type="text" class="form-control" placeholder="Full Name" required>
-						<div class="help-block with-errors"></div>
+				
+					<span class="mb-4">or use your email password</span>
+					<div class="row">
+						<div class="form-group col-12 mb-4">
+							<input asp-for="Email" type="email" class="form-control" placeholder="Email Address" required>
+							<div class="help-block with-errors"></div>
+						</div>
+						<div class="form-group col-12 mb-4">
+							<input asp-for="Password" type="password" class="form-control" placeholder="Password" required>
+							<div class="help-block with-errors"></div>
+						</div>
+						<div class="col-12 mb-3">
+						<a asp-page="/ForgotPassword">Forget Your Password?</a>
+
+						</div>
+						<div class="col-12">
+							<span asp-validation-summary="All" class="text-danger"></span>
+						</div>
+						<div class="col-12">
+							<button type="submit" class="btn-default">Sign In</button>
+						</div>
 					</div>
-					<div class="form-group col-12 mb-4">
-						<input asp-for="Email" type="email" class="form-control" placeholder="Email Address" required>
-						<div class="help-block with-errors"></div>
+				</form>
+			</div>
+			<div class="toggle-container">
+            <div class="toggle">
+                @* <a href="c:\users\admin\desktop\new folder (2)\teadala-exe201-master\teadala-exe201-master\exe2\pages\error.cshtml.cs">c:\users\admin\desktop\new folder (2)\teadala-exe201-master\teadala-exe201-master\exe2\pages\error.cshtml.cs</a> *@
+                @* <a href="c:\users\admin\desktop\new folder (2)\teadala-exe201-master\teadala-exe201-master\exe2\pages\error.cshtml">c:\users\admin\desktop\new folder (2)\teadala-exe201-master\teadala-exe201-master\exe2\pages\error.cshtml</a> *@
+					<div class="toggle-panel toggle-left">
+						<h1>Welcome Back!</h1>
+						<p>Enter your personal details to use all of site features</p>
+						<button class="hidden" id="login">Sign In</button>
 					</div>
-					<div class="form-group col-12 mb-4">
-						<input asp-for="Password" type="password" class="form-control" placeholder="Password" required>
-						<div class="help-block with-errors"></div>
+					<div class="toggle-panel toggle-right">
+						<h1>Hello, Friend!</h1>
+						<p>Register with your personal details to use all of site features</p>
+						<button class="hidden" id="register">Sign Up</button>
 					</div>
-					<div class="col-12">
-						<button type="submit" class="btn-default">Sign Up</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="form-container sign-in">
-			<form method="post" class="wow fadeInUp" data-wow-delay="0.6s">
-				<h1>Sign In</h1>
-				<div class="social-icons mb-4">
-					<a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-				</div>
-				<span class="mb-4">or use your email password</span>
-				<div class="row">
-					<div class="form-group col-12 mb-4">
-						<input asp-for="Email" type="email" class="form-control" placeholder="Email Address" required>
-						<div class="help-block with-errors"></div>
-					</div>
-					<div class="form-group col-12 mb-4">
-						<input asp-for="Password" type="password" class="form-control" placeholder="Password" required>
-						<div class="help-block with-errors"></div>
-					</div>
-					<div class="col-12 mb-3">
-						<a href="#">Forget Your Password?</a>
-					</div>
-					<div class="col-12">
-						<span asp-validation-summary="All" class="text-danger"></span>
-					</div>
-					<div class="col-12">
-						<button type="submit" class="btn-default">Sign In</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="toggle-container">
-			<div class="toggle">
-				<div class="toggle-panel toggle-left">
-					<h1>Welcome Back!</h1>
-					<p>Enter your personal details to use all of site features</p>
-					<button class="hidden" id="login">Sign In</button>
-				</div>
-				<div class="toggle-panel toggle-right">
-					<h1>Hello, Friend!</h1>
-					<p>Register with your personal details to use all of site features</p>
-					<button class="hidden" id="register">Sign Up</button>
 				</div>
 			</div>
 		</div>
-	</div>
-	<script src="script.js"></script>
-</body>
+		<script src="script.js"></script>
+	</body>
 
 </html>
-<!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@section Scripts {
-	<script>
-		window.addEventListener('DOMContentLoaded', () => {
-			const errorMessage = @Html.Raw(Json.Serialize(
-			ViewData.ModelState.Values
-			.SelectMany(v => v.Errors)
-			.Select(e => e.ErrorMessage)
-			.FirstOrDefault() ?? "")
-			);
 
-			if (errorMessage) {
-				Swal.fire({
-					icon: 'error',
-					title: 'Lỗi',
-					text: errorMessage,
-					confirmButtonText: 'OK'
-				});
-			}
-		});
-	</script>
-}
+
+
+
 
 <script>
 	const container = document.getElementById('container');
@@ -437,4 +426,27 @@
 	loginBtn.addEventListener('click', () => {
 		container.classList.remove("active");
 	});
+
+	window.onload = function () {
+		var message = '@TempData["ErrorMessage"]';
+		if (message) {
+			alert(message);
+		}
+	};
 </script>
+
+
+@section Scripts {
+	<script>
+		window.onload = function () {
+			var message = '@(TempData["ErrorMessage"] ?? "")'.trim();
+			if (message) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: message
+				});
+			}
+		};
+	</script>
+}
