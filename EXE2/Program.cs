@@ -1,6 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EXE2.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
+
 namespace EXE2
 {
     public class Program
@@ -14,19 +18,34 @@ namespace EXE2
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<Exe2Context>(options =>
   options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn")));
+            builder.Services.AddSession();
 
-            
-  
 
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/Login";
-        options.LogoutPath = "/Login?handler=Logout";
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-    });
 
-            builder.Services.AddAuthorization();
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+            })
+.AddCookie(options =>
+{
+    options.LoginPath = "/Login";
+    options.LogoutPath = "/Login?handler=Logout";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+})
+.AddGoogle(options =>
+{
+    options.ClientId = "1058708030793-huo1qo9uvvun7g239uonpge7utn8ubav.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+    options.Scope.Add("email");
+    options.SaveTokens = true;
+
+    options.ClaimActions.MapJsonKey("email", "email");
+});
+
+
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -41,7 +60,7 @@ namespace EXE2
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
 
