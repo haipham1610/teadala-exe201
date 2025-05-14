@@ -1,0 +1,523 @@
+﻿@page
+@model EXE2.Pages.ProfileModel
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    .profile-container {
+        background-color: #121d23;
+        min-height: 100vh;
+        padding: 40px 0;
+    }
+    
+    .sidebar-card {
+        background-color: #2c2424;
+        border: none;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .sidebar-item {
+        color: #fff !important;
+        border: none;
+        padding: 15px 20px;
+        transition: all 0.3s;
+        background-color: transparent;
+    }
+
+    .sidebar-item:hover {
+        background-color: #3a2f2f !important;
+    }
+
+    .sidebar-item.active {
+        background-color: rgb(200, 165, 94) !important;
+        color: #fff !important;
+    }
+
+    .content-card {
+        background-color: #2c2424;
+        border: none;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        border-radius: 15px;
+    }
+
+    .form-label {
+        color: #fff;
+    }
+
+    .form-control {
+        background-color: #3a2f2f;
+        border: 1px solid #4a3f3f;
+        color: #fff;
+    }
+
+    .form-control:focus {
+        background-color: #3a2f2f;
+        border-color: rgb(200, 165, 94);
+        color: #fff;
+        box-shadow: none;
+    }
+
+    .form-control:read-only {
+        background-color: #2c2424;
+    }
+
+    .table {
+        color: #fff;
+    }
+
+    .table thead th {
+        border-bottom: 2px solid #4a3f3f;
+        color: rgb(200, 165, 94);
+    }
+
+    .table td {
+        border-top: 1px solid #4a3f3f;
+    }
+
+    .badge {
+        padding: 8px 12px;
+        border-radius: 20px;
+    }
+
+    /* Order Styles */
+    .order-container {
+        background-color: rgba(200, 165, 94, 0.05);
+        border: 1px solid rgb(200, 165, 94);
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .order-container:hover {
+        background-color: rgba(200, 165, 94, 0.1);
+    }
+
+    .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .order-status {
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .status-pending { background-color: #FFA500; color: #261e1e; }
+    .status-processing { background-color: #1E90FF; color: #fff; }
+    .status-completed { background-color: #32CD32; color: #fff; }
+    .status-cancelled { background-color: #FF4444; color: #fff; }
+    .status-preparing { background-color: #FFA500; color: #261e1e; }
+    .status-delivering { background-color: #1E90FF; color: #fff; }
+
+    .order-details {
+        display: none;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgb(200, 165, 94);
+        color: #fff;
+    }
+
+    .order-item {
+        background-color: rgba(200, 165, 94, 0.05);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    .order-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .order-quantity {
+        color: rgb(200, 165, 94);
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+
+    .order-item-price {
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .order-item-total {
+        color: rgb(200, 165, 94);
+        font-weight: 600;
+    }
+
+    .order-date {
+        color: rgb(200, 165, 94);
+        font-size: 0.9rem;
+    }
+
+    .order-number {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .img-fluid {
+        border: 1px solid rgb(200, 165, 94);
+        border-radius: 4px;
+        max-width: 80px;
+    }
+
+    .order-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .order-info {
+        flex-grow: 1;
+    }
+
+    .order-meta {
+        text-align: right;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .order-total-display {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: rgb(200, 165, 94);
+        margin: 5px 0;
+    }
+
+    .order-items-count {
+        color: #fff;
+        opacity: 0.8;
+    }
+
+    .expand-icon {
+        margin-left: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .order-container.expanded .expand-icon {
+        transform: rotate(180deg);
+    }
+
+    .btn-cancel {
+        background-color: #FF4444;
+        color: #fff;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-cancel:hover {
+        background-color: #ff2222;
+        color: #fff;
+    }
+
+    .order-total-price {
+        background-color: rgba(200, 165, 94, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 15px;
+        text-align: right;
+    }
+
+    .btn-new-order {
+        color: rgb(200, 165, 94);
+        border-color: rgb(200, 165, 94);
+        background-color: transparent;
+    }
+
+    .btn-new-order:hover {
+        background-color: rgb(200, 165, 94);
+        color: #261e1e;
+        border-color: rgb(200, 165, 94);
+    }
+</style>
+
+<div class="profile-container">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="sidebar-card">
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#profile" class="list-group-item list-group-item-action sidebar-item active">
+                                <i class="fas fa-user me-2"></i> Profile
+                            </a>
+                            <a href="#orders" class="list-group-item list-group-item-action sidebar-item">
+                                <i class="fas fa-shopping-bag me-2"></i> My Orders
+                            </a>
+                            <a href="#change-password" class="list-group-item list-group-item-action sidebar-item">
+                                <i class="fas fa-key me-2"></i> Change Password
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="col-md-9">
+                <div class="content-card">
+                    <div class="card-body p-4">
+                        <!-- Profile Section -->
+                        <div id="profile">
+                            <h3 class="mb-4" style="color: rgb(200, 165, 94);">Profile Information</h3>
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" value="@User.Identity.Name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" value="user@example.com" readonly>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" value="+84 123 456 789">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" value="1990-01-01">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Address</label>
+                                        <textarea class="form-control" rows="3">123 Street Name, City, Country</textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn" 
+                                                style="background-color: rgb(200, 165, 94); color: white; padding: 10px 30px; border-radius: 5px; border: none;">
+                                            Save Changes
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Orders Section -->
+                        <div id="orders" class="d-none">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h3 class="mb-0" style="color: rgb(200, 165, 94);">My Orders</h3>
+                                <a asp-page="/Cart" class="btn btn-new-order">
+                                    <i class="fas fa-shopping-cart me-2"></i>New Order
+                                </a>
+                            </div>
+
+                            <!-- Order List -->
+                            <div class="order-list">
+                                <!-- Order 1 -->
+                                <div class="order-container" onclick="toggleOrderDetails(this)">
+                                    <div class="order-summary">
+                                        <div class="order-info">
+                                            <h5 class="order-number mb-1">Order #12345</h5>
+                                            <p class="order-date mb-0">Placed on: March 15, 2024</p>
+                                        </div>
+                                        <div class="order-meta">
+                                            <span class="order-status status-preparing">Preparing</span>
+                                            <span class="order-total-display">14.00 VNĐ</span>
+                                            <span class="order-items-count">3 items</span>
+                                            <i class="fas fa-chevron-down expand-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="order-details">
+                                        <div class="order-items">
+                                            <div class="order-item">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-2">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
+                                                             class="img-fluid" alt="Coffee">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h6 class="mb-1">Espresso</h6>
+                                                        <p class="order-quantity mb-0">Quantity: 2</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="order-item-price mb-0">€ 4.50 each</p>
+                                                    </div>
+                                                    <div class="col-md-3 text-end">
+                                                        <p class="order-item-total mb-0">€ 9.00</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="order-item">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-2">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img6.webp"
+                                                             class="img-fluid" alt="Coffee">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h6 class="mb-1">Cappuccino</h6>
+                                                        <p class="order-quantity mb-0">Quantity: 1</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="order-item-price mb-0">€ 5.00 each</p>
+                                                    </div>
+                                                    <div class="col-md-3 text-end">
+                                                        <p class="order-item-total mb-0">€ 5.00</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="order-total mt-3">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1">Shipping Address:</p>
+                                                    <p class="mb-0">John Doe<br>123 Coffee Street<br>City, Country</p>
+                                                </div>
+                                                <div class="col-md-6 text-end">
+                                                    <p class="mb-1">Payment Method: MoMo</p>
+                                                    <button class="btn btn-cancel mt-3" onclick="cancelOrder(event, '12345')">
+                                                        <i class="fas fa-times me-2"></i>Cancel Order
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Order 2 -->
+                                <div class="order-container" onclick="toggleOrderDetails(this)">
+                                    <div class="order-summary">
+                                        <div class="order-info">
+                                            <h5 class="order-number mb-1">Order #12344</h5>
+                                            <p class="order-date mb-0">Placed on: March 14, 2024</p>
+                                        </div>
+                                        <div class="order-meta">
+                                            <span class="order-status status-delivering">Delivering</span>
+                                            <span class="order-total-display">16.50 VNĐ</span>
+                                            <span class="order-items-count">1 item</span>
+                                            <i class="fas fa-chevron-down expand-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="order-details">
+                                        <div class="order-items">
+                                            <div class="order-item">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-2">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img7.webp"
+                                                             class="img-fluid" alt="Coffee">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h6 class="mb-1">Latte</h6>
+                                                        <p class="order-quantity mb-0">Quantity: 3</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="order-item-price mb-0">€ 5.50 each</p>
+                                                    </div>
+                                                    <div class="col-md-3 text-end">
+                                                        <p class="order-item-total mb-0">€ 16.50</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="order-total mt-3">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="mb-1">Shipping Address:</p>
+                                                    <p class="mb-0">John Doe<br>123 Coffee Street<br>City, Country</p>
+                                                </div>
+                                                <div class="col-md-6 text-end">
+                                                    <p class="mb-1">Payment Method: Cash on Delivery</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Change Password Section -->
+                        <div id="change-password" class="d-none">
+                            <h3 class="mb-4" style="color: rgb(200, 165, 94);">Change Password</h3>
+                            <form method="post">
+                                <div class="mb-3">
+                                    <label class="form-label">Current Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">New Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Confirm New Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <button type="submit" class="btn" 
+                                        style="background-color: rgb(200, 165, 94); color: white; padding: 10px 30px; border-radius: 5px; border: none;">
+                                    Update Password
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Handle sidebar navigation
+            $('.sidebar-item').click(function(e) {
+                e.preventDefault();
+                
+                // Update active state
+                $('.sidebar-item').removeClass('active');
+                $(this).addClass('active');
+                
+                // Show corresponding section
+                const target = $(this).attr('href').substring(1);
+                $('#profile, #orders, #change-password').addClass('d-none');
+                $('#' + target).removeClass('d-none');
+            });
+        });
+
+        function toggleOrderDetails(element) {
+            // Toggle the expanded class
+            element.classList.toggle('expanded');
+
+            // Find the order details div within this order container
+            const details = element.querySelector('.order-details');
+
+            // Toggle the display of details
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        }
+
+        function cancelOrder(event, orderId) {
+            // Prevent the click event from bubbling up to the order container
+            event.stopPropagation();
+
+            if (confirm('Are you sure you want to cancel this order?')) {
+                // Here you would typically make an API call to cancel the order
+                alert('Order #' + orderId + ' has been cancelled');
+                // Update the UI to reflect the cancelled status
+                const orderContainer = event.target.closest('.order-container');
+                const statusSpan = orderContainer.querySelector('.order-status');
+                statusSpan.className = 'order-status status-cancelled';
+                statusSpan.textContent = 'Cancelled';
+                // Remove the cancel button
+                event.target.remove();
+            }
+        }
+    </script>
+}
